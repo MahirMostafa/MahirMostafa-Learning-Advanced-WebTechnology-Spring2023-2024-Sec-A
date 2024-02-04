@@ -19,3 +19,17 @@ let obj1 = {name:'John', age: 25};
 let obj2 = {...obj1};
 
 let obj3 = { city: 'New York', ...obj1};
+
+function sum(...numbers) {
+    let total = 0;
+    for (let number of numbers) {
+        total += number;
+    }
+    return total;
+}
+
+let result1 = sum(1,2,3,4,5);
+console.log(result1);
+
+result2 = sum(10,20);
+console.log(result2)
