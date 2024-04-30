@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, NotFoundException, U
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { JwtGuard } from 'src/auth/guards/jwt-auth.guard';
+import { JwtAdminAuthGuard, JwtGuard } from 'src/auth/guards/jwt-auth.guard';
 import { CreateAdminDto } from './dto/create-admin.dto';
 
 @Controller('user')
@@ -20,7 +20,7 @@ export class UserController {
     return this.userService.createAdmin(createAdminDto);
   }
 
-  @UseGuards(JwtGuard)
+  @UseGuards(JwtAdminAuthGuard)
   @Get()
   findAll() {
     return this.userService.findAll();

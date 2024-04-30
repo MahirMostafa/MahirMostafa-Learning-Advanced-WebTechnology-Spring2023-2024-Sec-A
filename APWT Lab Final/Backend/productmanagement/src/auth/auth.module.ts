@@ -7,9 +7,10 @@ import { LocalStrategy } from './strategies/local-strategy';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/user/entities/user.entity';
 import { JwtStrategy } from './strategies/jwt-strategy';
+import { JwtAdminStrategy } from './strategies/jwt-strategy';
 
 @Module({
-  providers: [AuthService ,UserService,LocalStrategy, UserService,JwtStrategy],
+  providers: [AuthService ,UserService,LocalStrategy,JwtStrategy,JwtAdminStrategy],
   controllers: [AuthController],
 
   imports:[

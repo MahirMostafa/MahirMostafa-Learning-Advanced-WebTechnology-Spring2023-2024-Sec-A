@@ -7,19 +7,23 @@ import { Product } from '../product/entities/product.entity';
 @Injectable()
 export class CartService {
   constructor(
-    @InjectRepository(Cart) private readonly cartRepository: Repository<Cart>,
-    @InjectRepository(Product) private readonly productRepository: Repository<Product>,
+    @InjectRepository(Cart)
+    private readonly cartRepository: Repository<Cart>,
+    @InjectRepository(Product)
+    private readonly productRepository: Repository<Product>,
   ) {}
 
-  async addToCart(cartId: number, productId: number) {
-    const cart = await this.cartRepository.findOne(cartId, { relations: ['products'] });
-    const product = await this.productRepository.findOne(productId);
-
-    if (!cart || !product) {
-      throw new Error('Cart or Product not found');
+  async addToCart(productId: number, quantity: number) {
+    const product = await this.productRepository.findOne({ where: { id: productId } });
+    if (!product) {
+      throw new Error('Product not found');
     }
 
-    cart.products.push(product);
-    return this.cartRepository.save(cart);
+    const cartItem = new Cart();
+    cartItem.product = product;
+    cartItem.quantity = quantity;
+    cartItem.totalPrice = product.price * quantity;
+
+    return this.cartRepository.save(cartItem);
   }
 }

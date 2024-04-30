@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Cart } from '../../cart/entities/cart.entity';
 
 @Entity()
 export class Product {
@@ -17,8 +16,5 @@ export class Product {
 
   @Column({ type: 'text', nullable: true })
   description: string;
-
-    @ManyToOne(() => Cart, cart => cart.products)
-    cart: Cart;
 
 }

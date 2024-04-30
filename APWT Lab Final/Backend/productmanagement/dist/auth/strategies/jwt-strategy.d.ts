@@ -7,4 +7,12 @@ export declare class JwtStrategy extends JwtStrategy_base {
         username: any;
     }>;
 }
+declare const JwtAdminStrategy_base: new (...args: any[]) => Strategy;
+export declare class JwtAdminStrategy extends JwtAdminStrategy_base {
+    constructor();
+    validate(payload: any): Promise<{
+        user: any;
+        username: any;
+    }>;
+}
 export {};

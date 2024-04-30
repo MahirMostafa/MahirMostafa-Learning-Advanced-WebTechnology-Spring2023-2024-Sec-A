@@ -27,6 +27,7 @@ export class AuthService {
             username: user.email,
             sub: {
                 name: user.firstName,
+                role: user.role,
             },
         };
         return {

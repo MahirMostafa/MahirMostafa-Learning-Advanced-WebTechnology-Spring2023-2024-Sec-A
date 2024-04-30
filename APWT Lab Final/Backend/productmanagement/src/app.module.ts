@@ -33,7 +33,7 @@ import { CartModule } from './cart/cart.module';
     UserModule,
     ProductModule,
     AuthModule,
-    CartModule,
+    CartModule
   ],
   controllers: [AppController],
   providers: [AppService],

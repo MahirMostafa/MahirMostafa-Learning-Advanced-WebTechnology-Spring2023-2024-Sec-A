@@ -64,7 +64,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "createAdmin", null);
 __decorate([
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtGuard),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAdminAuthGuard),
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),

@@ -16,12 +16,13 @@ const local_strategy_1 = require("./strategies/local-strategy");
 const typeorm_1 = require("@nestjs/typeorm");
 const user_entity_1 = require("../user/entities/user.entity");
 const jwt_strategy_1 = require("./strategies/jwt-strategy");
+const jwt_strategy_2 = require("./strategies/jwt-strategy");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;
 exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
-        providers: [auth_service_1.AuthService, user_service_1.UserService, local_strategy_1.LocalStrategy, user_service_1.UserService, jwt_strategy_1.JwtStrategy],
+        providers: [auth_service_1.AuthService, user_service_1.UserService, local_strategy_1.LocalStrategy, jwt_strategy_1.JwtStrategy, jwt_strategy_2.JwtAdminStrategy],
         controllers: [auth_controller_1.AuthController],
         imports: [
             typeorm_1.TypeOrmModule.forFeature([user_entity_1.User]),
