@@ -1,0 +1,28 @@
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
+//import * as passport from 'passport';
+import session from 'express-session';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ValidationPipe(
+    {
+      whitelist : true ,
+      forbidNonWhitelisted : true,
+    }
+  ));
+  app.use(
+    session({
+      secret: 'mahir1234',
+      resave: false,
+      saveUninitialized: true,
+      cookie: {
+        maxAge: 360000, 
+      },
+    }),
+  
+  );
+  await app.listen(8000);
+}
+bootstrap();
