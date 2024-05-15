@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 import { GetCookieObject } from "../Cookies/CookiesLocal";
 
-export const IfAdmin = () =>{
-    const user: IUser = GetCookieObject('user')
+export const IfAdmin = async () =>{
+    const user: IUser = await GetCookieObject('user')
     
     if(user){
         if(user.role !== 'admin'){
@@ -15,8 +15,8 @@ export const IfAdmin = () =>{
 
 }
 
-export const IfUser = () =>{
-    const user: IUser = GetCookieObject('user')
+export const IfUser = async () =>{
+    const user: IUser = await GetCookieObject('user')
     
     if(user){
         if(user.role !== 'user'){
@@ -29,16 +29,16 @@ export const IfUser = () =>{
 
 }
 
-export const IfAny = () =>{
-    const user: IUser = GetCookieObject('user')
+export const IfAny = async () =>{
+    const user: IUser = await GetCookieObject('user')
     
     if(!user){
         redirect('/login');
     }
 }
 
-export const IsAdmin = (): boolean =>{
-    const user: IUser = GetCookieObject('user')
+export const IsAdmin = async (): Promise<boolean> =>{
+    const user =await GetCookieObject('user')
     
     if(user){
         if(user.role === 'admin'){
@@ -52,8 +52,8 @@ export const IsAdmin = (): boolean =>{
     }
 }
 
-export const IsUser = (): boolean =>{
-    const user: IUser = GetCookieObject('user')
+export const IsUser = async (): Promise<boolean> =>{
+    const user: IUser = await GetCookieObject('user')
     
     if(user){
         if(user.role === 'user'){

@@ -3,12 +3,13 @@ import { LogoutComponent } from "@/components/Auth/Logout";
 import { GetCookieObject } from "@/components/Cookies/CookiesLocal";
 import Link from "next/link";
 
-export default function ProfileLayout({children}:{children:any}){
+export default async function ProfileLayout({children}:{children:any}){
 
-    if(IsAdmin()){ 
+
+    if(await IsAdmin()){ 
         return(
             <div>          
-                <AdminProfile/>
+             <AdminProfile/>
                 {children}
             </div>
           );
@@ -47,7 +48,7 @@ export default function ProfileLayout({children}:{children:any}){
       }
 }
 
-export const AdminProfile = () => {
+  export const AdminProfile = () => {
     return(
         <div className="flex items-center justify-between bg-gray-900 p-4">
             <div className="flex items-center space-x-4">

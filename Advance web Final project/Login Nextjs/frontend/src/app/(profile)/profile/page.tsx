@@ -7,8 +7,10 @@ export const metadata : Metadata = {
   title : 'Profile'
 }
 
-export default function Profile(){
-const user: IUser = GetCookieObject('user');
+export default async function Profile(){
+const user = await GetCookieObject("user")
+console.log("fetcheduser" );
+console.log(user);
 
 return(
 <div className="flex items-center justify-center h-screen bg-gradient-to-b from-black to-gray-800">
